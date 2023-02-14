@@ -13,6 +13,7 @@ public class MailConfiguration {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        //test amaçlı düzenlendi.
         mailSender.setHost("smtp.itu.edu.tr");
         mailSender.setPort(587);
 

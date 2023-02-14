@@ -1,8 +1,9 @@
 package com.hrProject.HR.Project.controller;
 
 import com.hrProject.HR.Project.enums.TokenStatus;
-import com.hrProject.HR.Project.model.EmployeeRegisterDto;
+import com.hrProject.HR.Project.model.EmployeeRegisterDTO;
 import com.hrProject.HR.Project.model.MobileClient;
+import com.hrProject.HR.Project.model.MobileClientDTO;
 import com.hrProject.HR.Project.model.VerificationToken;
 import com.hrProject.HR.Project.service.MobileClientService;
 import com.hrProject.HR.Project.service.AuthenticationService;
@@ -35,8 +36,8 @@ public class authenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<MobileClient> registerMobileClient(
-            @RequestBody EmployeeRegisterDto employeeRegisterDto
+    public ResponseEntity<MobileClientDTO> registerMobileClient(
+            @RequestBody EmployeeRegisterDTO employeeRegisterDto
             , HttpServletRequest request) {
 
         return ResponseEntity.ok(authenticationService.registerNewMobileClient(employeeRegisterDto, request));
@@ -72,7 +73,7 @@ public class authenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<MobileClient> login(
+    public ResponseEntity<MobileClientDTO> login(
             @RequestBody String email
             , HttpServletRequest request) {
 

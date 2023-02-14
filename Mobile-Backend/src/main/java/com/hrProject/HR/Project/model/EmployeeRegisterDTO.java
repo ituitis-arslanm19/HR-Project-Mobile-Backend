@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class EmployeeRegisterDto {
+public class EmployeeRegisterDTO {
     String firstName;
     String lastName;
     Gender gender;

@@ -33,6 +33,10 @@ public class MobileClient implements UserDetails{
     @Column(name = "ENABLED")
     private boolean enabled;
 
+    @ManyToOne
+    @JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
+    private Company company;
+
     public MobileClient(){
         roles = new ArrayList<>();
         roles.add("USER");
