@@ -1,5 +1,6 @@
 package com.hrProject.HR.Project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class MobileClient implements UserDetails{
     private boolean enabled;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
     private Company company;
 

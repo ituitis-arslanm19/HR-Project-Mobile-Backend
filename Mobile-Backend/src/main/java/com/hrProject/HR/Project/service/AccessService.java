@@ -2,6 +2,7 @@ package com.hrProject.HR.Project.service;
 
 import com.hrProject.HR.Project.exception.CodeGenerationException;
 import com.hrProject.HR.Project.model.MobileClient;
+import com.hrProject.HR.Project.model.QrCode;
 import com.hrProject.HR.Project.totp.CodeGenerator;
 import com.hrProject.HR.Project.utils.time.TimeProvider;
 import org.springframework.stereotype.Service;
@@ -25,11 +26,14 @@ public class AccessService {
 
 
 
-    public String generate(String email) {
+    public QrCode generate(String email) {
+        QrCode qrCode;
         try{
             MobileClient employee = this.MobileClientService.getMobileClientByEmail(email);
             long counter = Math.floorDiv(timeProvider.getTime(), timePeriod);
-            return this.codeGenerator.generate(employee.getSecret(), counter);
+            qrCode =new QrCode();
+            qrCode.setData(this.codeGenerator.generate(employee.getSecret(), counter)+","+email );
+            return qrCode;
         }catch (CodeGenerationException e){
             return null;
         }

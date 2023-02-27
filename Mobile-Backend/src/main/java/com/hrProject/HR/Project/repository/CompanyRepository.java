@@ -13,6 +13,6 @@ import java.util.UUID;
 public interface CompanyRepository extends JpaRepository<Company, UUID> {
 
 
-
     Optional<Company> findByEmailDomain(String EmailDomain);
+
 }

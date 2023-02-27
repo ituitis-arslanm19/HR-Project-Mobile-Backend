@@ -1,6 +1,7 @@
 package com.hrProject.HR.Project.controller;
 
 import com.hrProject.HR.Project.model.MobileClient;
+import com.hrProject.HR.Project.model.QrCode;
 import com.hrProject.HR.Project.service.AccessService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +22,12 @@ public class accessController {
 
 
     @GetMapping
-    public ResponseEntity<String> generate(){
+    public ResponseEntity<QrCode> generate(){
         String email = ((MobileClient)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getEmail();
         //logger.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
-        return ResponseEntity.ok(this.accessService.generate(email));
+        QrCode qrCode = this.accessService.generate(email);
+
+
+        return ResponseEntity.ok(qrCode);
     }
 }

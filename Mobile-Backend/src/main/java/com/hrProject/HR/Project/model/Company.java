@@ -23,7 +23,7 @@ public class Company {
     private UUID id;
 
     @Column(name="COMPANY_NAME")
-    private String name;
+    private String companyName;
 
     @Column(name="COMPANY_OFFICIAL_NAME")
     private String officialName;

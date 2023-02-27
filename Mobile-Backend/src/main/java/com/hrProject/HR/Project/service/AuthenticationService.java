@@ -79,7 +79,7 @@ public class AuthenticationService {
             try {
                 RestTemplate restTemplate = new RestTemplate();
                 employeeRegisterDto.setSecret(secretGenerator.generate());
-                registeredMobileClient = restTemplate.postForObject(company.getServerAddress(), employeeRegisterDto, MobileClient.class);
+                registeredMobileClient = restTemplate.postForObject(company.getServerAddress()+"/employee", employeeRegisterDto, MobileClient.class);
                 registeredMobileClient.setCompany(company);
 
                 registeredMobileClient = mobileClientService.saveMobileClient(registeredMobileClient);
@@ -141,7 +141,7 @@ public class AuthenticationService {
 
         if (emailDomain != null) {
             //             String regex = "^([_A-Za-z0-9-+]+\\.?[_A-Za-z0-9-+]+@(" + emailDomain + "))$";
-            return  companyService.getByEmailDomain(extractEmailDomain(emailDomain));
+            return  companyService.getByEmailDomain(emailDomain);
         }
 
         return null;
